@@ -1,0 +1,24 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: pc-service
+#  datasource:
+#    url: ${URL_POSTGRES}
+#    username: ${USER_POSTGRES}
+#    password: ${PASS_POSTGRES}
+#    driver-class-name: org.postgresql.Driver
+
+
+  datasource:
+    url: jdbc:postgresql://51.250.26.59:5432/pc_db
+    username: secUREusER
+    password: StrongEnoughPassword)
+    driver-class-name: org.postgresql.Driver
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
