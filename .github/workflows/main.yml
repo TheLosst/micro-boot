@@ -21,3 +21,45 @@ jobs:
         context: ./account-service
         push: true
         tags: ${{ secrets.TEST_NAME }}/test-service:latest
+
+        
+  build-and-push-yc:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - uses: actions/checkout@v3
+
+    - name: Login to YC Registry
+      uses: docker/login-action@v3.0.0
+      with: 
+        registry: cr.yandex
+        username: json_key
+        password: ${{ secrets.YC_KEYS }}
+    
+    - name: Build and Push to YC
+      uses: docker/build-push-action@v5
+      with:
+        context: ./pc-service
+        push: true
+        tags: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/cvylev-service:latest
+
+  deploy: 
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: [build-and-push-yc] 
+    steps: 
+    
+    - name: Deploy serverless container
+      uses: yc-actions/yc-sls-container-deploy@v1
+      with: 
+        yc-sa-json-credentials: ${{ secrets.YC_KEYS }}
+        container-name: ${{ secrets.YC_CONTAINER_NAME }}
+        folder-id: ${{ secrets.YC_FOLDER_ID }}
+        revision-image-url: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/cvylev-service:latest
+        revision-service-account-id: ${{ secrets.YC_SA_ID }} 
+        revision-env: |
+                       URL_POSTGRES=${{ secrets.URL_POSTGRES }}
+                       USER_POSTGRES=${{ secrets.USER_POSTGRES }}
+                       PASS_POSTGRES=${{ secrets.PASS_POSTGRES }}
+        revision-memory: 4GB
+        revision-cpu: 2
