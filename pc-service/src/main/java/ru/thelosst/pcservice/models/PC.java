@@ -1,4 +1,4 @@
-package ru.stuff.pcservice.models;
+package ru.thelosst.pcservice.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

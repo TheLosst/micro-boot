@@ -1,12 +1,13 @@
-package ru.stuff.pcservice;
+package ru.thelosst.pcservice;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.stuff.pcservice.models.PC;
-import ru.stuff.pcservice.repositories.PcRepository;
-import ru.stuff.pcservice.services.PcService;
+
+import ru.thelosst.pcservice.models.PC;
+import ru.thelosst.pcservice.repositories.PcRepository;
+import ru.thelosst.pcservice.services.PcService;
 
 import java.util.Arrays;
 import java.util.List;

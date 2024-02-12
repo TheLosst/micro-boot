@@ -1,4 +1,4 @@
-package ru.stuff.pcservice;
+package ru.thelosst.pcservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

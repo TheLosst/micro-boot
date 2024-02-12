@@ -1,9 +1,10 @@
-package ru.stuff.pcservice.services;
+package ru.thelosst.pcservice.services;
 
 import lombok.RequiredArgsConstructor;
+import ru.thelosst.pcservice.models.PC;
+import ru.thelosst.pcservice.repositories.PcRepository;
+
 import org.springframework.stereotype.Service;
-import ru.stuff.pcservice.models.PC;
-import ru.stuff.pcservice.repositories.PcRepository;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package ru.stuff.pcservice;
+package ru.thelosst.pcservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,12 +1,13 @@
-package ru.stuff.pcservice.controllers;
+package ru.thelosst.pcservice.controllers;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import ru.thelosst.pcservice.models.PC;
+import ru.thelosst.pcservice.services.PcService;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.stuff.pcservice.models.PC;
-import ru.stuff.pcservice.services.PcService;
 
 import java.util.List;
 
