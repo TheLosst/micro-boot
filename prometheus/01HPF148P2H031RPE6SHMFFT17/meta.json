@@ -1,0 +1,17 @@
+{
+	"ulid": "01HPF148P2H031RPE6SHMFFT17",
+	"minTime": 1706709603092,
+	"maxTime": 1706716800000,
+	"stats": {
+		"numSamples": 61904,
+		"numSeries": 135,
+		"numChunks": 630
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HPF148P2H031RPE6SHMFFT17"
+		]
+	},
+	"version": 1
+}
