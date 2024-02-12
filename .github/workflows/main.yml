@@ -20,4 +20,4 @@ jobs:
       with:
         context: ./account-service
         push: true
-        tags: ${{ secrets.TEST_NAME }}/test/test-service:latest
+        tags: ${{ secrets.TEST_NAME }}/test-service:latest
