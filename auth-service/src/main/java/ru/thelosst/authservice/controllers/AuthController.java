@@ -17,16 +17,19 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest authRequest){
+        // Аутентификация пользователя по запросу authRequest
         return authService.login(authRequest);
     }
 
     @PostMapping("/refresh")
     public ResponseEntity<?> refresh(@RequestBody RefreshRequest refreshRequest){
+        // Обновление токенов пользователя по refreshRequest
         return authService.refresh(refreshRequest);
     }
 
     @GetMapping("/test")
     public String test(){
-        return "Auth Service is Started!";
+        // Проверка работоспособности сервиса аутентификации
+        return "Сервис аутентификации запущен!";
     }
 }

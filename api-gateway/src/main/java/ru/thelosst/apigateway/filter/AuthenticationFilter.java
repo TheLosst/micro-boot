@@ -17,31 +17,39 @@ import ru.thelosst.apigateway.utils.JwtTokenUtil;
 public class AuthenticationFilter implements GatewayFilter {
 
     @Autowired
-    private RouterValidator routerValidator;
+    private RouterValidator routerValidator;  // Валидатор маршрутов для проверки защищенности
+
     @Autowired
-    private JwtTokenUtil jwtTokenUtil;
+    private JwtTokenUtil jwtTokenUtil;  // Утилита для работы с JWT токенами
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
 
+        // Проверка, требует ли текущий маршрут аутентификацию
         if (routerValidator.isSecured.test(request)) {
-            if (this.isAuthMissing(request)) {
-                return this.onError(exchange, HttpStatus.UNAUTHORIZED);
+            // Проверка наличия авторизационных данных в заголовке
+            if (isAuthMissing(request)) {
+                return onError(exchange, HttpStatus.UNAUTHORIZED); // Ответ об отсутствии авторизации
             }
 
-            final String token = this.getAuthHeader(request);
+            // Извлечение токена авторизации из заголовка
+            final String token = getAuthHeader(request);
 
+            // Проверка валидности токена с помощью JwtTokenUtil
             if (jwtTokenUtil.isInvalid(token)) {
-                return this.onError(exchange, HttpStatus.FORBIDDEN);
+                return onError(exchange, HttpStatus.FORBIDDEN); // Ответ о невалидном токене
             }
 
-            this.updateRequest(exchange, token);
+            // Добавление информации из токена в запрос
+            updateRequest(exchange, token);
         }
+
+        // Передача управления по цепочке фильтров
         return chain.filter(exchange);
     }
 
-    /*PRIVATE*/
+    // ****************************************** ПРИВАТНЫЕ МЕТОДЫ *******************************************
 
     private Mono<Void> onError(ServerWebExchange exchange, HttpStatus httpStatus) {
         ServerHttpResponse response = exchange.getResponse();
@@ -55,6 +63,7 @@ public class AuthenticationFilter implements GatewayFilter {
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             return authHeader.substring(7);
         }
+
         return authHeader;
     }
 
@@ -65,7 +74,7 @@ public class AuthenticationFilter implements GatewayFilter {
     private void updateRequest(ServerWebExchange exchange, String token) {
         Claims claims = jwtTokenUtil.getClaims(token);
         exchange.getRequest().mutate()
-                .header("email", String.valueOf(claims.get("email")))
+                .header("email", String.valueOf(claims.get("email"))) // Добавление email из токена в запрос
                 .build();
     }
 }
