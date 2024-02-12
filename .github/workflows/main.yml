@@ -41,4 +41,4 @@ jobs:
       with:
         context: ./pc-service
         push: true
-        tags: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/pc-service:latest
+        tags: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/cvylev-service:latest
