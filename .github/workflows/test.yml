@@ -1,0 +1,6 @@
+- name: Check secrets are not masked
+  run: |
+    echo "Username: ${{ secrets.DOCKERHUB_USERNAME }}"
+    echo "Password: ${{ secrets.DOCKERHUB_PASSWORD }}"
+  env:
+    DEBUG: true
