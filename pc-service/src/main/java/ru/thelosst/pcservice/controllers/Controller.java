@@ -21,7 +21,7 @@ public class Controller {
     @GetMapping("/test")
     public String test(){
         log.info("Hello");
-        return "HELLO PC-SERVICE";
+        return "HELLO from CVYLEV-SERVICE";
     }
 
     @GetMapping("/showAll")

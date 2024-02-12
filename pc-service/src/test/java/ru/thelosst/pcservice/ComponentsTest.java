@@ -32,7 +32,7 @@ public class ComponentsTest {
     void testHelloEndpoint() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/test"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("HELLO CVYLEV-SERVICE"));
+                .andExpect(content().string("HELLO from CVYLEV-SERVICE"));
     }
 
     @Test
