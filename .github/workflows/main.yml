@@ -21,3 +21,24 @@ jobs:
         context: ./account-service
         push: true
         tags: ${{ secrets.TEST_NAME }}/test-service:latest
+
+        
+  build-and-push-yc:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - uses: actions/checkout@v3
+
+    - name: Login to YC Registry
+      uses: docker/login-action@v3.0.0
+      with: 
+        registry: cr.yandex
+        username: json_key
+        password: ${{ secrets.YC_KEYS }}
+    
+    - name: Build and Push to YC
+      uses: docker/build-push-action@v5
+      with:
+        context: ./pc-service
+        push: true
+        tags: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/pc-service:latest
