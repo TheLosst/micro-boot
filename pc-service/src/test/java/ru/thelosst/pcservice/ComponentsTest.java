@@ -49,7 +49,7 @@ public class ComponentsTest {
                 .andExpect(jsonPath("$[1].title").value("PC 2"))
                 .andExpect(jsonPath("$[1].price").value(2000));
 
-        // Verify that pcService.findAll() was called
+        // Verify that Service.findAll() was called
         verify(pcService, times(1)).findAll();
     }
 

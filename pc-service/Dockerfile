@@ -1,6 +1,3 @@
-#
-# Build stage
-#
 FROM eclipse-temurin:17-jdk-jammy AS build
 ENV HOME=/usr/app
 RUN mkdir -p $HOME
@@ -10,9 +7,7 @@ RUN chmod +x mvnw && \
     ./mvnw -f $HOME/pom.xml clean test && \
     ./mvnw -f $HOME/pom.xml package -DskipTests=true
 
-#
-# Package stage
-#
+
 FROM eclipse-temurin:17-jre-jammy
 EXPOSE 8080
 ARG JAR_FILE=/usr/app/target/*.jar
