@@ -13,11 +13,11 @@ jobs:
     - name: Log in to DockerHub
       uses: docker/login-action@v3.0.0
       with:
-        username: ${{ test.secrets.DOCKERHUB_USERNAME }}
-        password: ${{ test.secrets.DOCKERHUB_PASSWORD }}
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
     - name: Docker Build and Push to DockerHub
       uses: docker/build-push-action@v5
       with:
         context: ./account-service
         push: true
-        tags: ${{ test.secrets.DOCKERHUB_USERNAME }}/account-service:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/account-service:latest
