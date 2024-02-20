@@ -30,7 +30,7 @@ public class Controller {
     }
 
     @GetMapping("/get_price")
-    public String showAll(@RequestParam String title){
-        return pcService.findByTitle(title);
+    public String showAll(@RequestParam String charfiled){
+        return pcService.findByTitle(charfiled);
     }
 }

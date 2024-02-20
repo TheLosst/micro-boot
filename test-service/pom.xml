@@ -6,10 +6,10 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/> <!-- lookup parent from repositorygg -->
     </parent>
     <groupId>ru.stuff</groupId>
-    <artifactId>pc-service</artifactId>
+    <artifactId>test-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>pc-service</name>
     <description>pc-service</description>

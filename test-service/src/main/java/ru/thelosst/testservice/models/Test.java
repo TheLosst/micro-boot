@@ -1,4 +1,4 @@
-package ru.thelosst.pcservice.models;
+package ru.thelosst.testservice.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -16,7 +16,7 @@ public class PC {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "charfiled")
-    private String title;
+    private String charfiled;
     @Column(name = "intfield")
-    private int price;
+    private int intfield;
 }
