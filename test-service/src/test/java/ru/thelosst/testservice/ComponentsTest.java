@@ -1,16 +1,14 @@
-package ru.thelosst.pcservice;
+package ru.thelosst.testservice;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import ru.thelosst.pcservice.controllers.Controller;
-import ru.thelosst.pcservice.models.PC;
-import ru.thelosst.pcservice.services.PcService;
+import ru.thelosst.testservice.controllers.Controller;
+import ru.thelosst.testservice.models.Test;
+import ru.thelosst.testservice.services.TestService;
 
 import java.util.Arrays;
 
@@ -25,19 +23,19 @@ public class ComponentsTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private PcService pcService;
+    private TestService testService;
 
-    @Test
+    @org.junit.jupiter.api.Test
     void testHelloEndpoint() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/test"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("HELLO from CVYLEV-SERVICE"));
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void testShowAllEndpoint() throws Exception {
         // Arrange
-        when(pcService.findAll()).thenReturn(Arrays.asList(new PC(1L,"test1", 777), new PC(2L, "test2", 666)));
+        when(testService.findAll()).thenReturn(Arrays.asList(new Test(1L,"test1", 777), new Test(2L, "test2", 666)));
 
         // Act & Assert1
         mockMvc.perform(MockMvcRequestBuilders.get("/showAll"))
@@ -50,14 +48,14 @@ public class ComponentsTest {
                 .andExpect(jsonPath("$[1].price").value(666));
 
         // Verify that Service.findAll() was called
-        verify(pcService, times(1)).findAll();
+        verify(testService, times(1)).findAll();
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void testGetPriceEndpoint() throws Exception {
         // Arrange
         String title = "test1";
-        when(pcService.findByTitle(title)).thenReturn("test1 Цена: 777");
+        when(testService.findByTitle(title)).thenReturn("test1 Цена: 777");
 
         // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/get_price").param("title", title))
@@ -65,6 +63,6 @@ public class ComponentsTest {
                 .andExpect(content().string("test1 Цена: 777"));
 
         // Verify that pcService.findByTitle() was called with the correct parameter
-        verify(pcService, times(1)).findByTitle(title);
+        verify(testService, times(1)).findByTitle(title);
     }
 }

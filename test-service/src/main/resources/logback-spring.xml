@@ -12,7 +12,7 @@
                 <pattern>
                     <pattern>
                         {
-                        "app": "pc-log"
+                        "app": "test-log"
                         }
                     </pattern>
                 </pattern>

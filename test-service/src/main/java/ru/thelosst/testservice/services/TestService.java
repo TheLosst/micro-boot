@@ -1,8 +1,8 @@
 package ru.thelosst.testservice.services;
 
 import lombok.RequiredArgsConstructor;
-import ru.thelosst.testservice.models.PC;
-import ru.thelosst.testservice.repositories.PcRepository;
+import ru.thelosst.testservice.models.Test;
+import ru.thelosst.testservice.repositories.TestRepository;
 
 import org.springframework.stereotype.Service;
 
@@ -11,16 +11,16 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class PcService {
+public class TestService {
 
-    private final PcRepository pcRepository;
+    private final TestRepository testRepository;
 
-    public List<PC> findAll(){
-        return pcRepository.findAll();
+    public List<Test> findAll(){
+        return testRepository.findAll();
     }
 
     public String findByTitle(String charfiled){
-        Optional<PC> pc = pcRepository.findByTitle(charfiled);
+        Optional<Test> pc = testRepository.findByTitle(charfiled);
         return pc.get().getTitle() + " Цена: " + pc.get().getPrice();
     }
 }

@@ -10,13 +10,13 @@ import lombok.RequiredArgsConstructor;
 @Table(name = "test1")
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class PC {
+public class Test {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "charfiled")
-    private String charfiled;
+    private String title;
     @Column(name = "intfield")
-    private int intfield;
+    private int price;
 }

@@ -1,9 +1,9 @@
-package ru.thelosst.pcservice.controllers;
+package ru.thelosst.testservice.controllers;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import ru.thelosst.pcservice.models.PC;
-import ru.thelosst.pcservice.services.PcService;
+import ru.thelosst.testservice.models.Test;
+import ru.thelosst.testservice.services.TestService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Controller {
 
-    private final PcService pcService;
+    private final TestService testService;
 
     @GetMapping("/test")
     public String test(){
@@ -25,12 +25,12 @@ public class Controller {
     }
 
     @GetMapping("/showAll")
-    public List<PC> showAll(){
-        return pcService.findAll();
+    public List<Test> showAll(){
+        return testService.findAll();
     }
 
     @GetMapping("/get_price")
     public String showAll(@RequestParam String charfiled){
-        return pcService.findByTitle(charfiled);
+        return testService.findByTitle(charfiled);
     }
 }
