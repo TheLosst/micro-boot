@@ -39,7 +39,7 @@ jobs:
     - name: Build and Push to YC
       uses: docker/build-push-action@v5
       with:
-        context: ./pc-service
+        context: ./test-service
         push: true
         tags: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/cvylev-service:latest
 
