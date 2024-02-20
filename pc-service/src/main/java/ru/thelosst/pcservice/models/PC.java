@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 @Entity
 @Data
-@Table(name = "pcs")
+@Table(name = "test1")
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class PC {
@@ -15,8 +15,8 @@ public class PC {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "title")
+    @Column(name = "charfiled")
     private String title;
-    @Column(name = "price")
+    @Column(name = "intfield")
     private int price;
 }
