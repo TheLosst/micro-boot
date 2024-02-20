@@ -7,5 +7,5 @@ import ru.thelosst.testservice.models.Test;
 import java.util.Optional;
 
 public interface TestRepository extends JpaRepository<Test, Long> {
-    Optional<Test> findByTitle(String charfiled);
+    Optional<Test> findByCharfiled(String charfiled);
 }

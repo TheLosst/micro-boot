@@ -20,7 +20,7 @@ public class TestService {
     }
 
     public String findByTitle(String charfiled){
-        Optional<Test> pc = testRepository.findByTitle(charfiled);
-        return pc.get().getTitle() + " Цена: " + pc.get().getPrice();
+        Optional<Test> pc = testRepository.findByCharfiled(charfiled);
+        return pc.get().getCharfiled() + " Intfield: " + pc.get().getIntfield();
     }
 }

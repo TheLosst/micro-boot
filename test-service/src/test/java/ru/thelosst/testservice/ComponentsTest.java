@@ -41,11 +41,11 @@ public class ComponentsTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/showAll"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(1L))
-                .andExpect(jsonPath("$[0].title").value("test1"))
-                .andExpect(jsonPath("$[0].price").value(777))
+                .andExpect(jsonPath("$[0].charfiled").value("test1"))
+                .andExpect(jsonPath("$[0].intfield").value(777))
                 .andExpect(jsonPath("$[1].id").value(2L))
-                .andExpect(jsonPath("$[1].title").value("test2"))
-                .andExpect(jsonPath("$[1].price").value(666));
+                .andExpect(jsonPath("$[1].charfiled").value("test2"))
+                .andExpect(jsonPath("$[1].intfield").value(666));
 
         // Verify that Service.findAll() was called
         verify(testService, times(1)).findAll();
@@ -54,15 +54,15 @@ public class ComponentsTest {
     @org.junit.jupiter.api.Test
     void testGetPriceEndpoint() throws Exception {
         // Arrange
-        String title = "test1";
-        when(testService.findByTitle(title)).thenReturn("test1 Цена: 777");
+        String charfiled = "test1";
+        when(testService.findByTitle(charfiled)).thenReturn("test1 Цена: 777");
 
         // Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.get("/get_price").param("title", title))
+        mockMvc.perform(MockMvcRequestBuilders.get("/get_price").param("charfiled", charfiled))
                 .andExpect(status().isOk())
                 .andExpect(content().string("test1 Цена: 777"));
 
         // Verify that pcService.findByTitle() was called with the correct parameter
-        verify(testService, times(1)).findByTitle(title);
+        verify(testService, times(1)).findByTitle(charfiled);
     }
 }
