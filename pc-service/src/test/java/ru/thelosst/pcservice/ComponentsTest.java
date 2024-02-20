@@ -39,7 +39,7 @@ public class ComponentsTest {
         // Arrange
         when(pcService.findAll()).thenReturn(Arrays.asList(new PC(1L,"test1", 777), new PC(2L, "test2", 666)));
 
-        // Act & Assert
+        // Act & Assert1
         mockMvc.perform(MockMvcRequestBuilders.get("/showAll"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(1L))
