@@ -26,7 +26,7 @@ public class ServiceTestTS {
     @org.junit.jupiter.api.Test
     void testFindAll() {
         // Arrange
-        List<Test> expectedTestList = Arrays.asList(new Test(1L,"PC 1", 1000), new Test(2L,"PC 2", 2000));
+        List<Test> expectedTestList = Arrays.asList(new Test(1L,"test1", 777), new Test(2L,"test2", 666));
         when(testRepository.findAll()).thenReturn(expectedTestList);
 
         // Act
@@ -42,14 +42,14 @@ public class ServiceTestTS {
         // Arrange
         String charfiled = "test1";
         Test test = new Test(1L,charfiled, 777);
-        Optional<Test> optionalPc = Optional.of(test);
-        when(testRepository.findByCharfiled(charfiled)).thenReturn(optionalPc);
+        Optional<Test> optional = Optional.of(test);
+        when(testRepository.findByCharfiled(charfiled)).thenReturn(optional);
 
         // Act
         String result = testService.findByTitle(charfiled);
 
         // Assert
-        assertEquals(test.getCharfiled() + " Цена: " + test.getIntfield(), result);
+        assertEquals(test.getCharfiled() + " intfield: " + test.getIntfield(), result);
         verify(testRepository, times(1)).findByCharfiled(charfiled);
     }
 }
