@@ -32,7 +32,7 @@ public class EditorController {
    }
 
    // Обработчик GET-запроса на проверку токена
-   @GetMapping("/hi")
+   @GetMapping("/check")
    public String hi() {
        // Запись информационного сообщения в лог
        log.info("AuthToken correct");

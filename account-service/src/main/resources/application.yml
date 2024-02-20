@@ -11,7 +11,7 @@ spring:
 #    driver-class-name: org.postgresql.Driver
 
   datasource:
-    url: jdbc:postgresql://51.250.26.59:5432/pc_db
+    url: jdbc:postgresql://51.250.26.59:5432/TheLosst_Project_DB
     username: secUREusER
     password: StrongEnoughPassword)
     driver-class-name: org.postgresql.Driver

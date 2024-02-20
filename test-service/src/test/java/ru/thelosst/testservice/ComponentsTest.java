@@ -62,7 +62,7 @@ public class ComponentsTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("test1 Intfield: 777"));
 
-        // Verify that pcService.findByTitle() was called with the correct parameter
+        // Verify that testService.findByTitle() was called with the correct parameter
         verify(testService, times(1)).findByTitle(charfiled);
     }
 }
