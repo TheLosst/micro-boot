@@ -38,18 +38,18 @@ public class ServiceTestTS {
     }
 
     @org.junit.jupiter.api.Test
-    void testFindByTitle() {
+    void testFindByCharfiled() {
         // Arrange
-        String title = "PC 1";
-        Test test = new Test(1L,title, 1000);
+        String charfiled = "test1";
+        Test test = new Test(1L,charfiled, 777);
         Optional<Test> optionalPc = Optional.of(test);
-        when(testRepository.findByTitle(title)).thenReturn(optionalPc);
+        when(testRepository.findByCharfiled(charfiled)).thenReturn(optionalPc);
 
         // Act
-        String result = testService.findByTitle(title);
+        String result = testService.findByTitle(charfiled);
 
         // Assert
-        assertEquals(test.getTitle() + " Цена: " + test.getPrice(), result);
-        verify(testRepository, times(1)).findByTitle(title);
+        assertEquals(test.getCharfiled() + " Цена: " + test.getIntfield(), result);
+        verify(testRepository, times(1)).findByCharfiled(charfiled);
     }
 }
