@@ -1,46 +1,32 @@
 version: '3.7'
 
-# Определяем сервисы в нашей композиции
 services:
-  # Сервис Grafana
   grafana:
-    # Строим образ из Dockerfile расположенного в каталоге ./monitoring/grafana
     build: './monitoring/grafana'
-    # Открываем порт 3000 из контейнера на порт 3000 хост-машины
     ports:
       - 3000:3000
-    # Монтируем каталог ./monitoring/grafana в контейнер в директорию /var/lib/grafana
     volumes:
       - ./monitoring/grafana:/var/lib/grafana
-    # Устанавливаем переменные окружения для Grafana
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
-    # Подключаем сервис к сети monitoring с алиасом grafana
     networks:
       monitoring:
         aliases:
           - grafana
-  # Сервис Prometheus
   prometheus:
-    # Используем готовый образ prom/promethe+us для Prometheus
     image: prom/prometheus
-    # Открываем порт 9090 из контейнера на порт 9090 хост-машины
     ports:
       - 9090:9090
-    # Монтируем конфигурационный файл Prometheus и каталог с данными
     volumes:
       - ./monitoring/prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml
       - ./prometheus:/prometheus
-    # Устанавливаем дополнительный хост для DNS-разрешения
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    # Подключаем сервис к сети monitoring с алиасом prometheus
     networks:
       monitoring:
         aliases:
           - prometheus
 
-# Определяем сеть monitoring
 networks:
   monitoring:
