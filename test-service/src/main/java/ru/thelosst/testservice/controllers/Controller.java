@@ -29,7 +29,7 @@ public class Controller {
         return testService.findAll();
     }
 
-    @GetMapping("/get_price")
+    @GetMapping("/get_int")
     public String showAll(@RequestParam String charfiled){
         return testService.findByTitle(charfiled);
     }

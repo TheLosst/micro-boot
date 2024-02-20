@@ -55,12 +55,12 @@ public class ComponentsTest {
     void testGetPriceEndpoint() throws Exception {
         // Arrange
         String charfiled = "test1";
-        when(testService.findByTitle(charfiled)).thenReturn("test1 Цена: 777");
+        when(testService.findByTitle(charfiled)).thenReturn("test1 Intfield: 777");
 
         // Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.get("/get_price").param("charfiled", charfiled))
+        mockMvc.perform(MockMvcRequestBuilders.get("/get_int").param("charfiled", charfiled))
                 .andExpect(status().isOk())
-                .andExpect(content().string("test1 Цена: 777"));
+                .andExpect(content().string("test1 Intfield: 777"));
 
         // Verify that pcService.findByTitle() was called with the correct parameter
         verify(testService, times(1)).findByTitle(charfiled);
